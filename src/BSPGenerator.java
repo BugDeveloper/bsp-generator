@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.lang.IllegalArgumentException;
 
 /**
  * Created by BugDeveloper on 14.11.2016.
@@ -19,22 +20,21 @@ public class BSPGenerator {
         return map;
     }
 
-    public BSPGenerator(int width, int height, int minimalRoomSize, int differenceDivider, Random rnd) {
-        this.width = width;
-        this.height = height;
+    public BSPGenerator(int size, int minimalRoomSize, int differenceDivider, Random rnd) {
+        if ((differenceDivider >= minimalRoomSize) || (differenceDivider == 1)) {
+            throw new IllegalArgumentException("Value of differenceDivider must be less than minimalRoomSize and more than 1");
+        }
+        this.width = size;
+        this.height = size;
         this.minimalRoomSize = minimalRoomSize;
         this.differenceDivider = differenceDivider;
         this.rnd = rnd;
         map = new int[width][height];
+
     }
 
     private void generateRoom(BSPTree node)
     {
-        //if (node.getWidth() / minimalRoomSize - minSpace + 1 <= 0)
-       //     System.out.println("Width: " + node.getWidth() + ", Minimal room size: " + minimalRoomSize + ", Final: " + (node.getWidth() / minimalRoomSize - minSpace + 1));
-
-      //  if (node.getHeight() / minimalRoomSize - minSpace + 1 <= 0)
-       //     System.out.println("Height: " + node.getHeight() + ", Minimal room size: " + minimalRoomSize + ", Final: " + (node.getHeight() / minimalRoomSize - minSpace + 1));
 
         int x = node.getStartX() + minSpace + rnd.nextInt(node.getWidth() / minimalRoomSize - minSpace + 1);
         int y = node.getStartY() + minSpace + rnd.nextInt(node.getHeight() / minimalRoomSize - minSpace + 1);
