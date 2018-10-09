@@ -2,13 +2,12 @@
 
 ## Usage
 ```
-int width = 100;
-int height = 100;
+int size = 100;
 int minimalRoomSize = 6;
 int differenceDivider = 4
 Random rand = new Random();
 
-BSPGenerator bspGen = new BSPGenerator(width, height, minimalRoomSize, differenceDivider, rand);
+BSPGenerator bspGen = new BSPGenerator(size, minimalRoomSize, differenceDivider, rand);
 int[][] map = bspGen.generateMap();
 
 for (int i = 0; i < map.length; i++) {
@@ -22,9 +21,7 @@ for (int i = 0; i < map.length; i++) {
 ```
 ## Variables
 
-**width** - Width in tiles of the map which is going to be generated.
-
-**height** - Height in tiles of the map which is going to be generated.
+**size** - Size in tiles of the square map which is going to be generated.
 
 **minimalRoomSize** - Minimal possible size of the room.
 
@@ -34,4 +31,6 @@ for (int i = 0; i < map.length; i++) {
 
 ## Some results
 
-<img src="screenshots/1.png" width="400">  
+<img src="screenshots/1.png" width="400">
+<img src="screenshots/2.png" width="400">  
+<img src="screenshots/3.png" width="400">  
